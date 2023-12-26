@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,16 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>About</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{% static 'Style.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
   </head>
   <body>
     <div class="topnav">
-        <a href="home.html">Home</a>
-        <a href="news.html">News</a>
-        <a href="contact.html">Contact</a>
-        <a class="active" href="about.html">About</a>
+        <a href="/home/">Home</a>
+        <a href="/news/">News</a>
+        <a href="/contact/">Contact</a>
+        <a class="active" href="/about/">About</a>
       </div>
     <main>
         <div class ="w3-container">
