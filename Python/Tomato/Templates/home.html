@@ -9,16 +9,35 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="{% static 'gable.ico' %}" type="image/x-icon">
   </head>
   <body>
     <div class="topnav">
       <a class="active" href="/home/">Home</a>
-      <a href="/news/">News</a>
+      <a href="/news/">Villas</a>
       <a href="/contact/">Contact</a>
       <a href="/about/">About</a>
     </div>
     <main>
+
+      <div class="container">
+        <img src="{% static 'porch.avif' %}" alt="Snow" style="width:100%;">
+        <div class="bottom-left"></div>
+        <div class="top-left"></div>
+        <div class="top-right"></div>
+        <div class="bottom-right"></div>
+        <div class="centered">Find your dream home today at Gable!</div>
+
+        <div class="search-container centered">
+          <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+
+      </div>
+
         <div class ="w3-container">
         <h1>Welcome to the home page!</h1>
 
