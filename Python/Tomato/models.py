@@ -3,6 +3,7 @@ from django.db import models
 class Listing(models.Model):
     image = models.ImageField()
     title = models.CharField(max_length=30)
+    slug = models.SlugField()
     shortdescription = models.CharField(max_length=300)
     pricepernight = models.CharField(max_length = 30)
     longdescription = models.CharField(max_length=1000)
@@ -13,3 +14,4 @@ class Listing(models.Model):
 
 class Booking(models.Model):
     date = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField()

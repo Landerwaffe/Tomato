@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Listings</title>
+    <title>Listing Detail</title>
     <link rel="stylesheet" href="{% static 'Style.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="icon" href="{% static 'gable.ico' %}" type="image/x-icon">
@@ -14,26 +14,14 @@
   <body>
     <div class="topnav">
         <a href="/home/">Home</a>
-        <a class="active" href="/listings/">Listings</a>
-        <a href="/contact/">Contact</a>
+        <a href="/listings/">Listings</a>
+        <a class="active" href="/contact/">Contact</a>
         <a href="/about/">About</a>
       </div>
     <main>
         <div class ="w3-container">
-        <h1>That's news to me.</h1>
+        <h1>The devil is in the details.</h1>
         </div>
-        <!-- <div class = "box">
-        <h1>This is a box</h1>
-        </div> 
-        <div class = "box">
-          <h1>This is a second box</h1>
-        </div> -->
-        {% for listing in listings %}
-          <div class = "box">
-            <h1><a href="listing/<slug:listing>">{{ listing.title }}</h1>
-            <p>{{ listing.shortdescription }}</p>
-          </div>           
-        {% endfor %}
     </main>
 	<script src="index.js"></script>
   </body>

@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .pages import views
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +24,5 @@ urlpatterns = [
     path('listings/', views.listings),
     path('contact/', views.contact),
     path('about/', views.about),
+    path('listing/<slug:listing>' , views.listing_detail)
 ]

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from Tomato.models import Listing
 from Tomato.models import Booking
+from django.http import HttpResponse
 
 def home(request):
 
@@ -18,3 +19,6 @@ def contact(request):
 def about(request):
 
         return render(request, 'about.html')
+
+def listing_detail(request, slug):
+        return HttpResponse(slug)
