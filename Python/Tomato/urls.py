@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from .pages import views
 from django.conf.urls.static import static
 
@@ -25,7 +25,8 @@ urlpatterns = [
     path('listings/', views.listings),
     path('contact/', views.contact),
     path('about/', views.about),
-    path('listing/<slug:slug>/<int:id>' , views.listing_detail)
+    path('listing/<slug:slug>/<int:id>' , views.listing_detail),
+    path('', include('accounts.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
