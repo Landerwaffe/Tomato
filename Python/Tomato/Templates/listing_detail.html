@@ -14,13 +14,15 @@
   <body>
     <div class="topnav">
         <a href="/home/">Home</a>
-        <a href="/listings/">Listings</a>
-        <a class="active" href="/contact/">Contact</a>
+        <a class="active" href="/listings/">Listings</a>
+        <a href="/contact/">Contact</a>
         <a href="/about/">About</a>
       </div>
     <main>
         <div class ="w3-container">
-        <h1>The devil is in the details.</h1>
+        <h1>The devil is in {{ listings.title }}</h1>
+        <h2>{{ listings.longdescription}}</h2>
+        <h2>{{ listings.amenities }}</h2>
         </div>
     </main>
 	<script src="index.js"></script>

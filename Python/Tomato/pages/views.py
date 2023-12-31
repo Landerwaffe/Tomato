@@ -20,5 +20,6 @@ def about(request):
 
         return render(request, 'about.html')
 
-def listing_detail(request, slug):
-        return HttpResponse(slug)
+def listing_detail(request, slug, id):
+        listings = Listing.objects.get(pk = id)
+        return render(request, 'listing_detail.html', {'listings' : listings})

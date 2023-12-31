@@ -20,7 +20,7 @@
       </div>
     <main>
         <div class ="w3-container">
-        <h1>That's news to me.</h1>
+        <h1>Villas available currently:</h1>
         </div>
         <!-- <div class = "box">
         <h1>This is a box</h1>
@@ -30,8 +30,10 @@
         </div> -->
         {% for listing in listings %}
           <div class = "box">
-            <h1><a href="listing/<slug:listing>">{{ listing.title }}</h1>
+            <h1><a href="/listing/{{ listing.slug }}/{{ listing.id }}">{{ listing.title }}</a></h1>
+            <img src="/media/{{ listing.image }}" style="width:100%;"/>
             <p>{{ listing.shortdescription }}</p>
+            <p>Price per night: {{ listing.pricepernight }}</p>
           </div>           
         {% endfor %}
     </main>

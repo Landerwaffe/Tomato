@@ -36,8 +36,8 @@ body {
 }
 
 .box {
-  width: 300px;
-  border: 15px solid green;
+  width: 20%;
+  border: 15px solid navy;
   padding: 50px;
   margin: 20px;
 }
