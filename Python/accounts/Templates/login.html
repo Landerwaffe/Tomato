@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Listing Detail</title>
+    <title>Log in</title>
     <link rel="stylesheet" href="{% static 'Style.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="icon" href="{% static 'gable.ico' %}" type="image/x-icon">
@@ -14,17 +14,20 @@
   <body>
     <div class="topnav">
         <a href="/home/">Home</a>
-        <a class="active" href="/listings/">Listings</a>
+        <a href="/listings/">Listings</a>
         <a href="/contact/">Contact</a>
         <a href="/about/">About</a>
         <a href="/signup/">Register</a>
-        <a href="/login/">Login</a>
+        <a class="active" href="/login/">Login</a>
       </div>
     <main>
         <div class ="w3-container">
-        <h1>The devil is in {{ listings.title }}</h1>
-        <h2>{{ listings.longdescription}}</h2>
-        <h2>{{ listings.amenities }}</h2>
+        <h1>First Login.</h1>
+        <form class="site-form" action="/login/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Signup">
+        </form>
         </div>
     </main>
 	<script src="index.js"></script>
