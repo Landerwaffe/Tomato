@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 # Create your models here.
 class Listing(models.Model):
     image = models.ImageField()
@@ -13,5 +15,19 @@ class Listing(models.Model):
       return self.title
 
 class Booking(models.Model):
-    date = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField()
+    listing = models.ForeignKey(Listing, on_delete=models.CASCADE, default=None)
+    date = models.DateTimeField()
+    guests = models.IntegerField(default =  0)
+    preferences = models.CharField(max_length = 500, default = "None")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+      return self.listing.title
+
+class Profile(models.Model):
+   user = models.OneToOneField(User, on_delete=models.CASCADE)
+   gender = models.CharField(default = "Unspecified", max_length = 20)
+   picture = models.ImageField(default = None)
+
+   def __str__(self):
+      return self.user.username

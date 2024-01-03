@@ -19,6 +19,13 @@
         <a href="/about/">About</a>
         <a href="/signup/">Register</a>
         <a class="active" href="/login/">Login</a>
+        <a href="/booking/">Booking</a>
+        <form class="logout-link" action="/logout/" method="post">
+          {% csrf_token %}
+          <button type="submit" style="background-color:navy; color: white; border: none; padding: 14px 16px; font-size: 17px; float: right; cursor: pointer;">Logout</button>
+        </form>
+        <a href="/profile/" style="float:right;">{{ request.user }}</a>
+        <a href="/history/">History</a>
       </div>
     <main>
         <div class ="w3-container">
@@ -26,6 +33,9 @@
         <form class="site-form" action="/login/" method="post">
             {% csrf_token %}
             {{ form }}
+            {% if request.GET.next %}
+              <input type="hidden" name="next"value="{{ request.GET.next }}">
+            {% endif %}
             <input type="submit" value="Login">
         </form>
         </div>

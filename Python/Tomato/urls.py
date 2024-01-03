@@ -26,7 +26,9 @@ urlpatterns = [
     path('contact/', views.contact),
     path('about/', views.about),
     path('listing/<slug:slug>/<int:id>' , views.listing_detail),
-    path('', include('accounts.urls'))
+    path('', include('accounts.urls')),
+    path('profile/', views.profile),
+    path('edit/', views.edit)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Listing Detail</title>
+    <title>History</title>
     <link rel="stylesheet" href="{% static 'Style.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="icon" href="{% static 'gable.ico' %}" type="image/x-icon">
@@ -14,24 +14,31 @@
   <body>
     <div class="topnav">
         <a href="/home/">Home</a>
-        <a class="active" href="/listings/">Listings</a>
+        <a href="/listings/">Listings</a>
         <a href="/contact/">Contact</a>
         <a href="/about/">About</a>
         <a href="/signup/">Register</a>
         <a href="/login/">Login</a>
         <a href="/booking/">Booking</a>
         <form class="logout-link" action="/logout/" method="post">
-          {% csrf_token %}
-          <button type="submit" style="background-color:navy; color: white; border: none; padding: 14px 16px; font-size: 17px; float: right; cursor: pointer;">Logout</button>
+            {% csrf_token %}
+            <button type="submit" style="background-color:navy; color: white; border: none; padding: 14px 16px; font-size: 17px; float: right; cursor: pointer;">Logout</button>
         </form>
         <a href="/profile/" style="float:right;">{{ request.user }}</a>
-        <a href="/history/">History</a>
+        <a class="active" href="/history/">History</a>
       </div>
     <main>
         <div class ="w3-container">
-        <h1>{{ listings.title }}</h1>
-        <h2>{{ listings.longdescription}}</h2>
-        <h2>{{ listings.amenities }}</h2>
+        <h1>Booking History:</h1>
+        {% for booking in bookings %}
+          <div class = "box">
+            <p>Villa: {{ booking }}</p>
+            <p>Guests: {{ booking.guests }}</p>
+            <p>Date: {{ booking.date }}</p>
+            <p>Preferences: {{ booking.preferences }}</p>
+            <p>Booked by: {{ booking.author }}</p>
+          </div>           
+        {% endfor %}
         </div>
     </main>
 	<script src="index.js"></script>
