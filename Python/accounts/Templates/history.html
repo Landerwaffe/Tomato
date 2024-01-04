@@ -26,6 +26,10 @@
         </form>
         <a href="/profile/" style="float:right;">{{ request.user }}</a>
         <a class="active" href="/history/">History</a>
+            {% for profile in profiles %}
+              <!-- Need to iterate even if there's only one object in queryset -->
+              <img src="/media/{{ profile.picture }}" style="width:2%; float:right; border-radius: 50px; margin-right: 0.5%;"/>
+            {% endfor %}
       </div>
     <main>
         <div class ="w3-container">

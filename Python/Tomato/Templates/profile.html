@@ -37,22 +37,18 @@
           <div class ="box">
             {% for profile in profiles %}
               <!-- Need to iterate even if there's only one object in queryset -->
-              <img src="/media/{{ profile.picture }}" style="width:50%;"/>
+              <a href="/edit/picture"><img src="/media/{{ profile.picture }}" style="width:50%;"/></a>
             {% endfor %}
-            <p>Username: {{ request.user.username }}</p>
-            <a href="/edit/">First name: {{ request.user.first_name }}</a>
-            <p>Last name: {{ request.user.last_name }}</p>
+            <h2>Username: {{ request.user.username }}</h2>
+            <h2><a href="/edit/firstname">First name: {{ request.user.first_name }}</a></h2>
+            <h2><a href="/edit/lastname">Last name: {{ request.user.last_name }}</a></h2>
+            <h3><a href="/edit/email">Email: {{ request.user.email }}</a></h3>
+            <h3><a href="/edit/password">Password: ********</a></h3>
             {% for profile in profiles %}
               <!-- Need to iterate even if there's only one object in queryset -->
-              <p>Gender: {{ profile.gender }}</p>
+              <h3><a href="/edit/gender">Gender: {{ profile.gender }}</a></h3>
             {% endfor %}
-
-            <form class="site-form" action="/profile/" method="post">
-              <!-- enctype is needed for uploadfield -->
-              {%csrf_token %}
-              {{ form }}
-              <input type="submit" value="Update" style="float: right;">
-            </form>
+            <h3>*Username cannot be changed for identification.</h3>
           </div>
         </div>
     </main>

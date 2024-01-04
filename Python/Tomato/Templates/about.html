@@ -25,6 +25,10 @@
           <button type="submit" style="background-color:navy; color: white; border: none; padding: 14px 16px; font-size: 17px; float: right; cursor: pointer;">Logout</button>
         </form>
         <a href="/profile/" style="float:right;">{{ request.user }}</a>
+            {% for profile in profiles %}
+              <!-- Need to iterate even if there's only one object in queryset -->
+              <img src="/media/{{ profile.picture }}" style="width:2%; float:right; border-radius: 50px; margin-right: 0.5%;"/>
+            {% endfor %}
         <a href="/history/">History</a>
       </div>
     <main>

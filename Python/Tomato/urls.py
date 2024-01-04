@@ -28,7 +28,12 @@ urlpatterns = [
     path('listing/<slug:slug>/<int:id>' , views.listing_detail),
     path('', include('accounts.urls')),
     path('profile/', views.profile),
-    path('edit/', views.edit)
+    path('edit/firstname', views.editfirstname),
+    path('edit/lastname', views.editlastname),
+    path('edit/email', views.editemail),
+    path('edit/gender', views.editgender),
+    path('edit/password', views.editpassword),
+    path('edit/picture', views.editpicture),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
