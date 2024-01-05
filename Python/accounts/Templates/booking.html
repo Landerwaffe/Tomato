@@ -19,7 +19,7 @@
         <a href="/about/">About</a>
         <a href="/signup/">Register</a>
         <a href="/login/">Login</a>
-        <a class="active" href="/booking/">Booking</a>
+        <!-- <a class="active" href="/booking/">Booking</a> -->
         <form class="logout-link" action="/logout/" method="post">
             {% csrf_token %}
             <button type="submit" style="background-color:navy; color: white; border: none; padding: 14px 16px; font-size: 17px; float: right; cursor: pointer;">Logout</button>
@@ -35,8 +35,8 @@
         <div class ="w3-container">
         <h1>Enter Booking Information:</h1>
             <div class = "create-article">
-                <h2>Create Booking</h2>
-                <form class="site-form" action="/booking/" method="post">
+                <h2>Create booking for {{ listings }}</h2>
+                <form class="site-form" action="/booking/{{ listings.slug }}/{{ listings.id }}" method="post">
                     <!-- enctype is needed for uploadfield -->
                     {%csrf_token %}
                     {{ form }}

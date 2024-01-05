@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profile</title>
+    <title>Search results</title>
     <link rel="stylesheet" href="{% static 'Style.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="icon" href="{% static 'gable.ico' %}" type="image/x-icon">
@@ -14,7 +14,7 @@
   <body>
     <div class="topnav">
         <a href="/home/">Home</a>
-        <a href="/listings/">Listings</a>
+        <a class="active" href="/listings/">Listings</a>
         <a href="/contact/">Contact</a>
         <a href="/about/">About</a>
         <a href="/signup/">Register</a>
@@ -24,7 +24,7 @@
           {% csrf_token %}
           <button type="submit" style="background-color:navy; color: white; border: none; padding: 14px 16px; font-size: 17px; float: right; cursor: pointer;">Logout</button>
         </form>
-        <a class = "active" href="/profile/" style="float:right;">{{ request.user }}</a>
+        <a href="/profile/" style="float:right;">{{ request.user }}</a>
             {% for profile in profiles %}
               <!-- Need to iterate even if there's only one object in queryset -->
               <img src="/media/{{ profile.picture }}" style="width:2%; float:right; border-radius: 50px; margin-right: 0.5%;"/>
@@ -33,17 +33,23 @@
       </div>
     <main>
         <div class ="w3-container">
-        <h1>Manage Account:</h1>
-          <div style="padding-right:20px;"class ="box">
-            <h1>Edit profile:</h1>
-            <form class="site-form" action="/edit/email" method="post">
-              <!-- enctype is needed for uploadfield -->
-              {% csrf_token %}
-              {{ form }}
-              <input type="submit" value="Update" style="float: right;">
-            </form>
-          </div>
+        <h1>Villas searched:</h1>
         </div>
+        <!-- <div class = "box">
+        <h1>This is a box</h1>
+        </div> 
+        <div class = "box">
+          <h1>This is a second box</h1>
+        </div> -->
+        {% for listing in listings %}
+          <div class = "box">
+            <h1><a href="/listing/{{ listing.slug }}/{{ listing.id }}">{{ listing.title }}</a></h1>
+            <img src="/media/{{ listing.image }}" style="width:100%;"/>
+            <p>{{ listing.shortdescription }}</p>
+            <p>Price per night: {{ listing.pricepernight }}</p>
+            <h1><a href="/booking/{{ listing.slug }}/{{ listing.id }}">Book Now</a></h1>
+          </div>           
+        {% endfor %}
     </main>
 	<script src="index.js"></script>
   </body>

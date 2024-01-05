@@ -34,6 +34,7 @@ urlpatterns = [
     path('edit/gender', views.editgender),
     path('edit/password', views.editpassword),
     path('edit/picture', views.editpicture),
+    path('query/', views.query),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

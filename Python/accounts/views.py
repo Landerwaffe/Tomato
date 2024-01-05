@@ -44,19 +44,23 @@ def signout(request):
         return redirect("/listings/")
          
 @login_required(login_url = "/login/")
-def booking(request):
+def booking(request, slug, id):
+     # print(request.get_full_path()) //Note for future
+
      profiles = Profile.objects.filter(user = request.user.id)
+     listings = Listing.objects.get(pk = id)
      if request.method == 'POST':
         form = forms.CreateBooking(request.POST) 
         # request.FILES if submitting files
         if form.is_valid():
              instance = form.save(commit=False)
              instance.author = request.user
+             instance.listing = listings
              instance.save()
              return redirect('/listings/')
      else:
         form = forms.CreateBooking()
-     context = {'profiles': profiles, 'form': form}
+     context = {'profiles': profiles, 'form': form, 'listings': listings}
      return render(request, 'booking.html', context)
 
 @login_required(login_url = "/login/")

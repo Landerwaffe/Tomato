@@ -17,6 +17,15 @@ def listings(request):
         context = {'profiles': profiles, 'listings': listings}
         return render(request, 'listings.html', context)
 
+def query(request):
+        profiles = Profile.objects.filter(user = request.user.id)
+        print(request.GET)
+        query_dict = request.GET # this is a dictionary
+        query = query_dict.get("query")
+        listings = Listing.objects.filter(title = query)
+        context = {'profiles': profiles, 'listings': listings}
+        return render(request, 'query.html', context)
+
 def contact(request):
         profiles = Profile.objects.filter(user = request.user.id)
         context = {'profiles': profiles}
