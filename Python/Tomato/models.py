@@ -11,6 +11,8 @@ class Listing(models.Model):
     longdescription = models.CharField(max_length=1000)
     amenities = models.CharField(max_length=300)
     detailedimage = models.ImageField(default = None)
+    xcoordinate = models.FloatField(default = None, max_length = 30)
+    ycoordinate = models.FloatField(default = None, max_length = 30)
 
     def __str__(self):
       return self.title

@@ -9,6 +9,8 @@
     <title>Listing Detail</title>
     <link rel="stylesheet" href="{% static 'Style.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <link rel="icon" href="{% static 'gable.ico' %}" type="image/x-icon">
   </head>
   <body>
@@ -35,10 +37,26 @@
         <div class ="w3-container">
         <h1>{{ listings.title }}</h1>
         <img src="/media/{{ listings.detailedimage }}" style="width:50%;"/>
-        <h2>{{ listings.longdescription}}</h2>
+        <h2>{{ listings.longdescription }}</h2>
         <h2>{{ listings.amenities }}</h2>
+        <!-- <h2>{{ listings.xcoordinate }} and {{ listings.ycoordinate }}</h2> -->
+
+        <div id="map" style="height: 600px; width: 600px;"></div>
+        <script>
+          var x = "{{ listings.xcoordinate }}";
+          var y = "{{ listings.ycoordinate }}";
+          var map = L.map('map').setView([x, y], 13);
+          var marker = L.marker([x, y]).addTo(map);
+          marker.bindPopup("<b>{{ listings.title }}</b><br>Villa information.").openPopup();
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          }).addTo(map);
+        </script>
+
         </div>
     </main>
 	<script src="index.js"></script>
   </body>
 </html>
+
