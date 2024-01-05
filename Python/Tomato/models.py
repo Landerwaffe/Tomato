@@ -10,6 +10,7 @@ class Listing(models.Model):
     pricepernight = models.CharField(max_length = 30)
     longdescription = models.CharField(max_length=1000)
     amenities = models.CharField(max_length=300)
+    detailedimage = models.ImageField(default = None)
 
     def __str__(self):
       return self.title

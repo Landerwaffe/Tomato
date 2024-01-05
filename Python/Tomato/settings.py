@@ -136,3 +136,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+#MEDIA_URL MEDIA_ROOT STATIC_URL STATICFILES_DIRS DATABASES INSTALLED_APPS and importing are all needed to setup a beginning Django project
