@@ -15,7 +15,7 @@
     <div class="topnav">
         <a href="/home/">Home</a>
         <a href="/listings/">Listings</a>
-        <a href="/contact/">Contact</a>
+        <a href="/contact/" id="id">Contact</a>
         <a href="/about/">About</a>
         <a href="/signup/">Register</a>
         <a href="/login/">Login</a>
@@ -36,7 +36,15 @@
         <h1>Enter Booking Information:</h1>
             <div class = "create-article">
                 <h2>Create booking for {{ listings }}</h2>
-                <form class="site-form" action="/booking/{{ listings.slug }}/{{ listings.id }}" method="post">
+                <script>
+                // var id = document.getElementById('id').value;
+                // document.write(5 + 6);
+                // document.write(id);
+                // var title = document.getElementById('id_guests').value;
+                // document.write(5 + 6);
+                // document.write(title);
+                </script>
+                <form onsubmit="return confirm('Confirm booking for {{ listings }}?');" class="site-form" action="/booking/{{ listings.slug }}/{{ listings.id }}" method="post" >
                     <!-- enctype is needed for uploadfield -->
                     {%csrf_token %}
                     {{ form }}

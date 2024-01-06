@@ -1,5 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+
+# Validation code
+def validate_zero(value):
+    if value <= 0:
+        raise ValidationError(
+            _('%(value)s cannot be booked'),
+            params={'value': value},
+        )
 
 # Create your models here.
 class Listing(models.Model):
@@ -16,11 +26,11 @@ class Listing(models.Model):
 
     def __str__(self):
       return self.title
-
+    
 class Booking(models.Model):
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE, default=None)
     date = models.DateTimeField()
-    guests = models.IntegerField(default =  0)
+    guests = models.IntegerField(default =  0, validators = [validate_zero])
     preferences = models.CharField(max_length = 500, default = "None")
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
@@ -34,3 +44,4 @@ class Profile(models.Model):
 
    def __str__(self):
       return self.user.username
+   
