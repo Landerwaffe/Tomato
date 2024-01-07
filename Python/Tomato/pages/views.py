@@ -8,7 +8,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 def home(request):
         profiles = Profile.objects.filter(user = request.user.id)
         context = {'profiles': profiles}
-        return render(request, 'home.html', context)
+        return render(request, 'index.html', context)
 
 def listings(request):
         listings = Listing.objects.all()
