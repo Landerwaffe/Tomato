@@ -34,9 +34,10 @@
     <main>
         <div class ="w3-container">
         <h1>Register:</h1>
-        <form class="site-form" action="/signup/" method="post">
+        <form class="site-form" action="/signup/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form }}
+            {{ profileform }}
             <input type="submit" value="Sign up">
         </form>
         </div>
