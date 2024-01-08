@@ -22,9 +22,13 @@ def query(request):
         print(request.GET)
         query_dict = request.GET # this is a dictionary
         query = query_dict.get("query")
-        listings = Listing.objects.filter(title = query)
-        countrysearch = Listing.objects.filter(country = query)
-        context = {'profiles': profiles, 'listings': listings, 'countrysearch': countrysearch}
+        listings = Listing.objects.filter(title__icontains = query)
+        countrysearch = Listing.objects.filter(country__icontains = query)
+        pricesearch = Listing.objects.filter(pricepernight = query)
+        amenitysearch = Listing.objects.filter(amenities__icontains = query)
+        # print("Country search returns:")
+        # print(countrysearch)
+        context = {'profiles': profiles, 'listings': listings, 'countrysearch': countrysearch, 'pricesearch': pricesearch , 'amenitysearch': amenitysearch}
         return render(request, 'query.html', context)
 
 def contact(request):

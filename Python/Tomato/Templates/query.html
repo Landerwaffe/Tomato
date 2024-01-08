@@ -34,31 +34,61 @@
     <main>
         <div class ="w3-container">
         <h1>Villas searched:</h1>
-        </div>
         <!-- <div class = "box">
         <h1>This is a box</h1>
         </div> 
         <div class = "box">
           <h1>This is a second box</h1>
         </div> -->
-        {% for listing in listings %}
-          <div class = "box">
-            <h1><a href="/listing/{{ listing.slug }}/{{ listing.id }}">{{ listing.title }}</a></h1>
-            <img src="/media/{{ listing.image }}" style="width:100%;"/>
-            <p>{{ listing.shortdescription }}</p>
-            <p>Price per night: {{ listing.pricepernight }}</p>
-            <h1><a href="/booking/{{ listing.slug }}/{{ listing.id }}">Book Now</a></h1>
-          </div>           
-        {% endfor %}
-        {% for listing in countrysearch %}
-          <div class = "box">
-            <h1><a href="/listing/{{ listing.slug }}/{{ listing.id }}">{{ listing.title }}</a></h1>
-            <img src="/media/{{ listing.image }}" style="width:100%;"/>
-            <p>{{ listing.shortdescription }}</p>
-            <p>Price per night: {{ listing.pricepernight }}</p>
-            <h1><a href="/booking/{{ listing.slug }}/{{ listing.id }}">Book Now</a></h1>
-          </div>           
-        {% endfor %}
+        {% if listings.all %}
+          <h2>Villas matching name:</h2>
+          {% for listing in listings %}
+            <div class = "box">
+              <h1><a href="/listing/{{ listing.slug }}/{{ listing.id }}">{{ listing.title }}</a></h1>
+              <img src="/media/{{ listing.image }}" style="width:100%;"/>
+              <p>{{ listing.shortdescription }}</p>
+              <p>Price per night ($): {{ listing.pricepernight }}</p>
+              <h1><a href="/booking/{{ listing.slug }}/{{ listing.id }}">Book Now</a></h1>
+            </div>           
+          {% endfor %}
+        {% endif %}
+        {% if countrysearch.all %}
+          <h2>Villas matching country:</h2>
+          {% for listing in countrysearch %}
+            <div class = "box">
+              <h1><a href="/listing/{{ listing.slug }}/{{ listing.id }}">{{ listing.title }}</a></h1>
+              <img src="/media/{{ listing.image }}" style="width:100%;"/>
+              <p>{{ listing.shortdescription }}</p>
+              <p>Price per night ($): {{ listing.pricepernight }}</p>
+              <h1><a href="/booking/{{ listing.slug }}/{{ listing.id }}">Book Now</a></h1>
+            </div>           
+          {% endfor %}
+        {% endif %}
+        {% if pricesearch.all %}
+          <h2>Villas matching price:</h2>
+          {% for listing in pricesearch %}
+            <div class = "box">
+              <h1><a href="/listing/{{ listing.slug }}/{{ listing.id }}">{{ listing.title }}</a></h1>
+              <img src="/media/{{ listing.image }}" style="width:100%;"/>
+              <p>{{ listing.shortdescription }}</p>
+              <p>Price per night ($): {{ listing.pricepernight }}</p>
+              <h1><a href="/booking/{{ listing.slug }}/{{ listing.id }}">Book Now</a></h1>
+            </div>           
+          {% endfor %}
+        {% endif %}
+        {% if amenitysearch.all %}
+          <h2>Villas matching amenity:</h2>
+          {% for listing in amenitysearch %}
+            <div class = "box">
+              <h1><a href="/listing/{{ listing.slug }}/{{ listing.id }}">{{ listing.title }}</a></h1>
+              <img src="/media/{{ listing.image }}" style="width:100%;"/>
+              <p>{{ listing.shortdescription }}</p>
+              <p>Price per night ($): {{ listing.pricepernight }}</p>
+              <h1><a href="/booking/{{ listing.slug }}/{{ listing.id }}">Book Now</a></h1>
+            </div>           
+          {% endfor %}
+        {% endif %}
+        </div>
     </main>
 	<script src="index.js"></script>
   </body>
