@@ -88,6 +88,30 @@
             </div>           
           {% endfor %}
         {% endif %}
+        {% if shortdescriptionsearch.all %}
+          <h2>Villas matching short description:</h2>
+          {% for listing in shortdescriptionsearch %}
+            <div class = "box">
+              <h1><a href="/listing/{{ listing.slug }}/{{ listing.id }}">{{ listing.title }}</a></h1>
+              <img src="/media/{{ listing.image }}" style="width:100%;"/>
+              <p>{{ listing.shortdescription }}</p>
+              <p>Price per night ($): {{ listing.pricepernight }}</p>
+              <h1><a href="/booking/{{ listing.slug }}/{{ listing.id }}">Book Now</a></h1>
+            </div>           
+          {% endfor %}
+        {% endif %}
+        {% if longdescriptionsearch.all %}
+          <h2>Villas matching detailed description:</h2>
+          {% for listing in longdescriptionsearch %}
+            <div class = "box">
+              <h1><a href="/listing/{{ listing.slug }}/{{ listing.id }}">{{ listing.title }}</a></h1>
+              <img src="/media/{{ listing.image }}" style="width:100%;"/>
+              <p>{{ listing.shortdescription }}</p>
+              <p>Price per night ($): {{ listing.pricepernight }}</p>
+              <h1><a href="/booking/{{ listing.slug }}/{{ listing.id }}">Book Now</a></h1>
+            </div>           
+          {% endfor %}
+        {% endif %}
         </div>
     </main>
 	<script src="index.js"></script>
