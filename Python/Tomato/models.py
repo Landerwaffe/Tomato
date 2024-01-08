@@ -23,6 +23,7 @@ class Listing(models.Model):
     detailedimage = models.ImageField(default = None)
     xcoordinate = models.FloatField(default = None, max_length = 30)
     ycoordinate = models.FloatField(default = None, max_length = 30)
+    country = models.CharField(default = None, max_length = 100)
 
     def __str__(self):
       return self.title

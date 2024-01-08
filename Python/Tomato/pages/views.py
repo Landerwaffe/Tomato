@@ -23,7 +23,8 @@ def query(request):
         query_dict = request.GET # this is a dictionary
         query = query_dict.get("query")
         listings = Listing.objects.filter(title = query)
-        context = {'profiles': profiles, 'listings': listings}
+        countrysearch = Listing.objects.filter(country = query)
+        context = {'profiles': profiles, 'listings': listings, 'countrysearch': countrysearch}
         return render(request, 'query.html', context)
 
 def contact(request):
