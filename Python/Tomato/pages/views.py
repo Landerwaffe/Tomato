@@ -30,7 +30,7 @@ def query(request):
         longdescriptionsearch = Listing.objects.filter(longdescription__icontains = query)
         # print("Country search returns:")
         # print(countrysearch)
-        context = {'profiles': profiles, 'listings': listings, 'countrysearch': countrysearch, 'pricesearch': pricesearch , 'amenitysearch': amenitysearch, 'longdescriptionsearch': longdescriptionsearch, 'shortdescriptionsearch': shortdescriptionsearch}
+        context = {'profiles': profiles, 'listings': listings, 'countrysearch': countrysearch, 'pricesearch': pricesearch , 'amenitysearch': amenitysearch, 'shortdescriptionsearch': shortdescriptionsearch, 'longdescriptionsearch': longdescriptionsearch}
         return render(request, 'query.html', context)
 
 def contact(request):
