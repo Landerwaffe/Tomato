@@ -30,7 +30,7 @@ class Listing(models.Model):
     
 class Booking(models.Model):
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE, default=None)
-    date = models.DateTimeField()
+    date = models.DateField()
     guests = models.IntegerField(default =  0, validators = [validate_zero])
     preferences = models.CharField(max_length = 500, default = "None")
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
