@@ -81,7 +81,7 @@ body {
 /* Centered text */
 .centered {
   position: absolute;
-  top: 40%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 80px;
