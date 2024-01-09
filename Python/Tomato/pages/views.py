@@ -20,11 +20,20 @@ def listings(request):
 def query(request):
         profiles = Profile.objects.filter(user = request.user.id)
         print(request.GET)
+        min = -1
+        max = -1
         query_dict = request.GET # this is a dictionary
         query = query_dict.get("query")
+        if "-" in query:
+              print("- found!")
+              list = query.split('-')
+              print(list[0])
+              print(list[1])
+              min = list[0]
+              max = list[1]
         listings = Listing.objects.filter(title__icontains = query)
         countrysearch = Listing.objects.filter(country__icontains = query)
-        pricesearch = Listing.objects.filter(pricepernight = query)
+        pricesearch = Listing.objects.filter(pricepernight__range=(min, max))
         amenitysearch = Listing.objects.filter(amenities__icontains = query)
         shortdescriptionsearch = Listing.objects.filter(shortdescription__icontains = query)
         longdescriptionsearch = Listing.objects.filter(longdescription__icontains = query)

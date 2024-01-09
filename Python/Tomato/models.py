@@ -17,7 +17,7 @@ class Listing(models.Model):
     title = models.CharField(max_length=30)
     slug = models.SlugField()
     shortdescription = models.CharField(max_length=300)
-    pricepernight = models.CharField(default = None, max_length = 30)
+    pricepernight = models.IntegerField(default = None)
     longdescription = models.CharField(max_length=1000)
     amenities = models.CharField(max_length=300)
     detailedimage = models.ImageField(default = None)
